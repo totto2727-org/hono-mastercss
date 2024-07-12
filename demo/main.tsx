@@ -1,8 +1,8 @@
 /** @jsxImportSource @hono/hono/jsx */
 
-import { Hono } from "@hono/hono";
-import { logger } from "@hono/hono/logger";
-import { masterCssMiddleware } from "../mod.ts";
+import { Hono } from "jsr:@hono/hono@4.4.12";
+import { logger } from "jsr:@hono/hono@4.4.12/logger";
+import { masterCssMiddleware } from "jsr:@totto/hono-mastercss@0.1.0";
 
 const app = new Hono();
 
