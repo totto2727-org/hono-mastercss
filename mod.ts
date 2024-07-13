@@ -1,12 +1,18 @@
 import { createMiddleware } from "@hono/hono/factory";
 import type { Config } from "@master/css";
 import { render } from "@master/css-server";
-import type { MiddlewareHandler } from "@hono/hono/types";
+import type { Env, Input, MiddlewareHandler } from "@hono/hono/types";
 
 /**
  * Type definition for the Master CSS Middleware function.
  */
-export type MasterCssMiddleware = (config?: Config) => MiddlewareHandler;
+export type MasterCssMiddleware<
+  // deno-lint-ignore no-explicit-any
+  E extends Env = any,
+  P extends string = string,
+  // deno-lint-ignore ban-types
+  I extends Input = {},
+> = (config?: Config) => MiddlewareHandler<E, P, I>;
 
 /**
  * Master CSS Middleware function.
