@@ -4,7 +4,7 @@ import { Hono } from "jsr:@hono/hono@4.4.12";
 import { logger } from "jsr:@hono/hono@4.4.12/logger";
 import { serveStatic } from "jsr:@hono/hono@4.4.12/deno";
 import { cache } from "jsr:@hono/hono@4.4.12/cache";
-import { masterCssMiddleware } from "jsr:@totto/hono-mastercss@0.1.0";
+import { masterCssMiddleware } from "jsr:@totto/hono-mastercss@0.1.1";
 
 // import config from "./static/js/master.css.js";
 
