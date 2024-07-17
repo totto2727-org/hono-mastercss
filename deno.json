@@ -14,7 +14,7 @@
     "@master/css-server": "npm:@master/css-server@^2.0.0-rc.44"
   },
   "tasks": {
-    "demo": "deno run --allow-all demo/main.tsx",
+    "demo": "deno run --watch --allow-read --allow-net demo/main.tsx",
     "precommit": "deno check *.ts && deno lint && deno fmt && deno test"
   }
 }
