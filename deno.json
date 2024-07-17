@@ -9,7 +9,7 @@
     ".": "./mod.ts"
   },
   "imports": {
-    "@hono/hono": "jsr:@hono/hono@^4.4.12",
+    "@hono/hono": "jsr:@hono/hono@^4.5.0",
     "@master/css": "npm:@master/css@^2.0.0-rc.44",
     "@master/css-server": "npm:@master/css-server@^2.0.0-rc.44"
   },
