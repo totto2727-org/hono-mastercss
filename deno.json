@@ -1,6 +1,6 @@
 {
   "name": "@totto/hono-mastercss",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "lock": false,
   "exclude": [
     "./.history/*"
