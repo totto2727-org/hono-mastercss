@@ -1,4 +1,4 @@
-/** @jsxImportSource @hono/hono/jsx */
+/** @jsxImportSource jsr:@hono/hono@4.5.0/jsx */
 
 import { Hono } from "jsr:@hono/hono@4.5.0";
 import { logger } from "jsr:@hono/hono@4.5.0/logger";
@@ -6,7 +6,7 @@ import { serveStatic } from "jsr:@hono/hono@4.5.0/deno";
 import { cache } from "jsr:@hono/hono@4.5.0/cache";
 import * as path from "jsr:@std/path@1.0.0";
 
-import { masterCssMiddleware } from "../mod.ts";
+import { masterCssMiddleware } from "jsr:@totto/hono-mastercss@0.2.0";
 
 const app = new Hono();
 

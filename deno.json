@@ -16,5 +16,13 @@
   "tasks": {
     "demo": "deno run --watch --allow-read --allow-net demo/main.tsx",
     "precommit": "deno check *.ts && deno lint && deno fmt && deno test"
+  },
+  "deploy": {
+    "project": "37a30286-0245-45cb-b8fe-b5cc67706b39",
+    "exclude": [
+      "**/node_modules"
+    ],
+    "include": [],
+    "entrypoint": "demo/main.tsx"
   }
 }
