@@ -15,7 +15,6 @@ export const masterCssMiddleware = (config?: Config): MiddlewareHandler =>
   createMiddleware(async (c, next) => {
     await next();
 
-    if (c.res.status !== 200) return;
     if (!c.res.headers.get("content-type")?.includes("text/html")) return;
 
     const html = await c.res.text();
