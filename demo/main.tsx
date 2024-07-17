@@ -1,20 +1,18 @@
 /** @jsxImportSource @hono/hono/jsx */
 
-import { Hono } from "jsr:@hono/hono@4.4.12";
-import { logger } from "jsr:@hono/hono@4.4.12/logger";
-import { serveStatic } from "jsr:@hono/hono@4.4.12/deno";
-import { cache } from "jsr:@hono/hono@4.4.12/cache";
-import { masterCssMiddleware } from "jsr:@totto/hono-mastercss@0.1.1";
+import { Hono } from "jsr:@hono/hono@4.5.0";
+import { logger } from "jsr:@hono/hono@4.5.0/logger";
+import { serveStatic } from "jsr:@hono/hono@4.5.0/deno";
+import { cache } from "jsr:@hono/hono@4.5.0/cache";
+import * as path from "jsr:@std/path@1.0.0";
 
-// import config from "./static/js/master.css.js";
+import { masterCssMiddleware } from "../mod.ts";
 
 const app = new Hono();
 
 app.use(logger());
 
-// Applies only to APIs that return the entire page
-// Master CSS is `<style id="master">... </style>`, so beware of duplication.
-app.use("/content", masterCssMiddleware());
+app.use("*", masterCssMiddleware());
 
 app.get("/content", (c) =>
   c.html(
@@ -41,7 +39,6 @@ app.get("/content", (c) =>
           rel="modulepreload"
           href="https://esm.sh/@master/css-runtime@rc"
         />
-        <link rel="modulepreload" href="./static/js/master.css.js" />
         <link rel="modulepreload" href="./static/js/init-mastercss.js" />
         <script type="module" src="./static/js/init-mastercss.js"></script>
       </head>
@@ -62,13 +59,14 @@ app.get(
 );
 
 app.use(
-  "static/*",
+  "/static/*",
   cache({
     cacheName: "static",
     cacheControl: "max-age=86400",
     wait: true,
   }),
 );
-app.use("static/*", serveStatic({ root: "./" }));
+
+app.use("/static/*", serveStatic({ root: path.relative(".", import.meta.dirname ?? ".") }));
 
 Deno.serve(app.fetch);
